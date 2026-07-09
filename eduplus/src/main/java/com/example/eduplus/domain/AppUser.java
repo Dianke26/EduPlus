@@ -1,0 +1,28 @@
+package com.example.eduplus.domain;
+
+import com.example.eduplus.domain.enums.Role;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Entity
+@Table(name = "users")
+@Getter
+@Setter
+public class AppUser {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String fullname;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+}
