@@ -92,7 +92,7 @@ public class AuthService {
     protected String createRefreshToken(AppUser user) {
 
         refreshTokenRepository.deleteByUser(user);
-
+        refreshTokenRepository.flush();
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setUser(user);
         refreshToken.setToken(UUID.randomUUID().toString());
